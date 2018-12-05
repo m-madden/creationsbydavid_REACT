@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import {Header, Slideshow, Content, Map, Footer} from './components';
+import React from 'react';
+import './App.scss';
+import { Header, Slideshow, Content, Map, Footer } from './components';
 
 const App = () => {
 		
