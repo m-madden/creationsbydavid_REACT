@@ -1,0 +1,11 @@
+.headerImages {
+	position: relative;
+	.scrim {
+		background: rgba(white, 0.4);
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 1rem;
+		bottom: 0;
+	}
+}
