@@ -1,0 +1,12 @@
+button {
+	outline: none;
+	background: none;
+	border: none;
+	font: $font-weight-medium $font-size-regular $font-family-text;
+	text-transform: uppercase;
+	padding: 0.5rem 1rem;
+	white-space: nowrap;
+	&.active {
+		color: $primary;
+	}
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700');
+
+$font-size-small: 14px;
+$font-size-regular: 16px;
+$font-size-large: 20px;
+$font-size-x-large: 36px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-family-text: "Roboto", "Arial", sans-serif;
+
+* {
+	-webkit-font-smoothing: antialiased;
+	font-size: $font-size-regular;
+	font-family: $font-family-text;
+	line-height: 1.5em; 
+}
