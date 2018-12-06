@@ -159,22 +159,21 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-function  sections_endpoint( $request_data ) {
-	
-	$args = array(
-		'post_type' => 'post'
+add_action('rest_api_init', 'register_rest_images' );
+function register_rest_images(){
+	register_rest_field( array('post'),
+		'fimg_url',
+		array(
+				'get_callback'    => 'get_rest_featured_image',
+				'update_callback' => null,
+				'schema'          => null,
+		)
 	);
-
-	$posts = get_posts($args);
-	foreach ($posts as $key => $post) {
-		$posts[$key]->acf = get_post_gallery_images( $post );
-	}
-	return  $posts;
 }
-
-add_action( 'rest_api_init', function () {
-	register_rest_route( 'sections/v1', '/post/', array(
-		'methods' => 'GET',
-		'callback' => 'sections_endpoint'
-	));
-});
+function get_rest_featured_image( $object, $field_name, $request ) {
+	if( $object['featured_media'] ){
+		$img = wp_get_attachment_image_src( $object['featured_media'], $size = 'thumbnail' );
+		return $img[0];
+	}
+	return false;
+}
