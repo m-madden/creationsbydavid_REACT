@@ -10,8 +10,9 @@ export class Category extends Component {
 	}
 
 	componentWillReceiveProps = (nextProps) => {
+		this.setState({posts: []})
 		let { active_category } = nextProps
-		if(active_category) {
+		if(active_category.id) {
 			fetch(`${process.env.REACT_APP_WP_API_ROOT}posts?categories=${active_category.id}`)
 			.then(res => res.json())
 			.then(posts => {

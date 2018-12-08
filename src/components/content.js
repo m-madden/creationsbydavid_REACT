@@ -7,13 +7,15 @@ export const Content = (props) => {
 	return(
 		<div className="content">
 		<Categories>
-			<ContentNav/>
+			
 			<CategoriesContext.Consumer>
-				{({active_category}) => (
-					<Category active_category={active_category}>
-						<Section/>
+				{({active_category}) => {
+					return(
+						<Category active_category={active_category}>
+						<ContentNav/>
+						{/* <Section/> */}
 					</Category>
-				)}
+				)}}
 			</CategoriesContext.Consumer>
 		</Categories>
 		</div>
