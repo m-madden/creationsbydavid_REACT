@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import TransitionGroup from 'react-transition-group';
 
 export class Item extends Component {
 	constructor(props) {
@@ -14,7 +13,7 @@ export class Item extends Component {
 		let that = this;
 		window.setTimeout(function() {
 			that.show();
-		}, that.props.delay)
+		}, that.props.delay * 300)
 	}
 
 	show = () => {
@@ -22,9 +21,12 @@ export class Item extends Component {
 	}
 
 	render() {
-		let { item } = this.props
+		let { item, openPost } = this.props
 		return(
-			<img className={"section__item " + this.state.hidden} src={item.fimg_url} alt={item.slug}/>
+			<div onClick={() => openPost(item.ID)} className={"item " + this.state.hidden}>
+				<img src={item.fimg} alt={item.title}/>
+				<p>{item.title}</p>
+			</div>
 		)
 	}
 }

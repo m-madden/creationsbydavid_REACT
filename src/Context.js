@@ -1,4 +1,3 @@
 import React from 'react';
 
-export const CategoriesContext = React.createContext();
-export const CategoryContext = React.createContext();
+export const ContentContext = React.createContext();

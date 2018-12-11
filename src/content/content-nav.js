@@ -1,6 +1,6 @@
 import React from 'react'
-import { CategoriesContext } from '../Context';
-import { Section } from './';
+import { ContentContext } from '../Context';
+import { InlineCategory } from './';
 
 export const ContentNav = () => {
 
@@ -27,14 +27,16 @@ export const ContentNav = () => {
 	// window.onresize = resize
 	
 	return(
-		<CategoriesContext.Consumer>
-			{({categories, active_category, switch_category}) => {
-				let catNames = categories.length ? 
-				categories.map((cat, i) => {
+		<ContentContext.Consumer>
+			{({content, active_category, switch_category}) => {
+				let catNames = content.length ? 
+				content.map((cat, i) => {
 					return(
 						<div className="contentNav__catGroup" key={i}>
-							<button disabled={cat.name === active_category.name} onClick={() => {switch_category(cat)}} className={cat.name === active_category.name ? "contentNav__catGroup--name active" : "contentNav__catGroup--name"}>{cat.name}</button>
-							{cat.name === active_category.name ? <Section/> : null}
+							<button disabled={cat.id === active_category} onClick={() => {switch_category(cat.id)}} className={cat.id === active_category ? "contentNav__catGroup--name active" : "contentNav__catGroup--name"}>{cat.name}</button>
+							{cat.id === active_category ?
+								<InlineCategory posts={cat.posts}/>
+							: null}
 						</div>
 						)
 				})
@@ -45,6 +47,6 @@ export const ContentNav = () => {
 					</nav>
 				)
 			}}
-		</CategoriesContext.Consumer>
+		</ContentContext.Consumer>
 	)
 }

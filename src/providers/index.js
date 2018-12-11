@@ -1,4 +1,3 @@
-import { Categories } from './categories';
-import { Category } from './category';
+import { Content } from './content';
 
-export { Categories, Category }
+export { Content }
