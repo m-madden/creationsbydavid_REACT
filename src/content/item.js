@@ -21,9 +21,10 @@ export class Item extends Component {
 	}
 
 	render() {
-		let { item, openPost } = this.props
+		let { item, open_post } = this.props
+		console.log(item)
 		return(
-			<div onClick={() => openPost(item.ID)} className={"item " + this.state.hidden}>
+			<div onClick={() => open_post(item.ID)} className={"item " + this.state.hidden}>
 				<img src={item.fimg} alt={item.title}/>
 				<p>{item.title}</p>
 			</div>

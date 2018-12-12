@@ -28,14 +28,14 @@ export const ContentNav = () => {
 	
 	return(
 		<ContentContext.Consumer>
-			{({content, active_category, switch_category}) => {
+			{({content, active_category, switch_category, open_post}) => {
 				let catNames = content.length ? 
 				content.map((cat, i) => {
 					return(
 						<div className="contentNav__catGroup" key={i}>
 							<button disabled={cat.id === active_category} onClick={() => {switch_category(cat.id)}} className={cat.id === active_category ? "contentNav__catGroup--name active" : "contentNav__catGroup--name"}>{cat.name}</button>
 							{cat.id === active_category ?
-								<InlineCategory posts={cat.posts}/>
+								<InlineCategory posts={cat.posts} open_post={open_post}/>
 							: null}
 						</div>
 						)

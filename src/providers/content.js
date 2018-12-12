@@ -15,9 +15,7 @@ export class Content extends Component {
 		fetch(this.state.api_endpoint)
 		.then(res => res.json())
 		.then((content) => {
-			// let content = pre_content.map((cat, i) => {
-			// 	return {[cat.id]: cat}
-			// })
+			console.log(content)
 			this.setState({
 				content,
 				active_category: content[0].id
@@ -30,6 +28,14 @@ export class Content extends Component {
 		this.setState({active_category})
 	}
 
+	openPost = (postID) => {
+		fetch(`${process.env.REACT_APP_WP_API_ROOT}posts/30`)
+		.then(res => res.json())
+		.then(post => {
+			console.log(post)
+		})
+	}
+
 	render() {
 		let { active_category, content } = this.state
 		return(
@@ -37,7 +43,8 @@ export class Content extends Component {
 				value={{
 					active_category,
 					content,
-					switch_category: this.switchCategory.bind(this)
+					switch_category: this.switchCategory.bind(this),
+					open_post: this.openPost.bind(this)
 				}}
 			>
 			{this.props.children}
