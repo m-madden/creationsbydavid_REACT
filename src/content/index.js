@@ -1,5 +1,5 @@
 import { ContentNav } from './content-nav';
-import { Section } from './section';
 import { Item } from './item';
+import { InlineCategory } from './inline-category';
 
-export { ContentNav, Section, Item }
+export { ContentNav, Item, InlineCategory }

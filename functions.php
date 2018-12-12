@@ -159,21 +159,48 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-add_action('rest_api_init', 'register_rest_images' );
-function register_rest_images(){
-	register_rest_field( array('post'),
-		'fimg_url',
-		array(
-				'get_callback'    => 'get_rest_featured_image',
-				'update_callback' => null,
-				'schema'          => null,
-		)
+// add_action('rest_api_init', 'register_rest_images' );
+// function register_rest_images(){
+// 	register_rest_field( array('post'),
+// 		'fimg_url',
+// 		array(
+// 				'get_callback'    => 'get_rest_featured_image',
+// 				'update_callback' => null,
+// 				'schema'          => null,
+// 		)
+// 	);
+// }
+
+// function get_rest_featured_image( $object, $field_name, $request ) {
+// 	if( $object['featured_media'] ){
+// 		$img = wp_get_attachment_image_src( $object['featured_media'], $size = 'thumbnail' );
+// 		return $img[0];
+// 	}
+// 	return false;
+// }
+
+function my_rest_prepare_term( $data, $item, $request ) {
+	$args = array(
+		'tax_query' => array(
+			array(
+				'taxonomy' => $item->taxonomy,
+				'field' => 'slug',
+				'terms' => $item->slug
+			)
+		),
+		'posts_per_page' => 5
 	);
-}
-function get_rest_featured_image( $object, $field_name, $request ) {
-	if( $object['featured_media'] ){
-		$img = wp_get_attachment_image_src( $object['featured_media'], $size = 'thumbnail' );
-		return $img[0];
+	$posts = get_posts( $args );
+	$posts_arr = array();
+	foreach ( $posts as $p ) {
+		$image = wp_get_attachment_image_src(get_post_thumbnail_id($p->ID),"thumbnail");
+		$posts_arr[] = array(
+			'ID' => $p->ID,
+			'title' => $p->post_title,
+			'fimg' => $image[0]
+		);
 	}
-	return false;
+	$data->data['posts'] = $posts_arr;
+	return $data;
 }
+add_filter( 'rest_prepare_category', 'my_rest_prepare_term', 10, 3 );

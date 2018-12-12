@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Header, Slideshow, Content, Map, Footer } from './components';
+import { Header, Slideshow, ContentArea, Map, Footer } from './components';
 
 const App = () => {
 		
@@ -8,7 +8,7 @@ const App = () => {
 		<div className="App">
 			<Header/>
 			<Slideshow/>
-			<Content/>
+			<ContentArea/>
 			<Map/>
 			<Footer/>
 		</div>

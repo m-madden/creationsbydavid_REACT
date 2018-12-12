@@ -1,4 +1,8 @@
 .contentNav {
-	display: flex;
 	justify-content: center;
+}
+
+.contentNav__catGroup {
+	border-bottom: 1px solid $neutral;
+	width: 100%;
 }

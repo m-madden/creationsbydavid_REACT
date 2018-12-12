@@ -17,3 +17,18 @@ $font-family-text: "Roboto", "Arial", sans-serif;
 	font-family: $font-family-text;
 	line-height: 1.5em; 
 }
+
+aside, aside a {
+	padding: 0 1rem;
+	font-size: $font-size-large;
+	color: $neutralDark;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+aside a {
+	padding: 0;
+	text-decoration: none;
+	font-weight: $font-weight-bold;
+}
