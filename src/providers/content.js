@@ -15,9 +15,6 @@ export class Content extends Component {
 		fetch(this.state.api_endpoint)
 		.then(res => res.json())
 		.then((content) => {
-			// let content = pre_content.map((cat, i) => {
-			// 	return {[cat.id]: cat}
-			// })
 			this.setState({
 				content,
 				active_category: content[0].id

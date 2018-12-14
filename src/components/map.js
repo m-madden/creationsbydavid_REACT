@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-const google = window.google;
+const google = window.google
 
 export class Map extends Component {
 	constructor(props) {

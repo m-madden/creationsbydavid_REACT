@@ -14,10 +14,10 @@ export class InlineCategory extends Component {
 	}
 
 	render() {
-		let { posts } = this.props
+		let { posts, open_post } = this.props
 		let items = posts.map((item, i) => {
 			return(
-				<Item key={i} item={item} delay={i}/>
+				<Item key={i} item={item} delay={i} open_post={open_post}/>
 			)
 		})
 		return(

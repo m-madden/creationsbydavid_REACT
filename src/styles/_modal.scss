@@ -1,0 +1,99 @@
+.modalScrim {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(black, 0.4);
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 1rem;
+}
+
+@keyframes spinRight {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spinLeft {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-720deg);
+	}
+}
+
+.spinner {
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	border: 10px solid transparent;
+	border-top-color: white;
+	border-bottom-color: white;
+	align-self: center;
+	display: flex;
+	animation: spinRight 1s linear infinite;
+	&:after {
+		display: block;
+		content: "";
+		width: 50px;
+		height: 50px;
+		margin: auto;
+		border-radius: 50%;
+		border: 10px solid transparent;
+		border-left-color: white;
+		border-right-color: white;
+		animation: spinLeft 1s linear infinite;
+	}
+}
+
+@keyframes expand {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.modal {
+	align-self: center;
+	padding: 1rem;
+	background: white;
+	border-radius: 3px;
+	width: 100%;
+	box-sizing: border-box;
+	animation: expand 200ms ease-out forwards;
+	overflow-y: auto;
+	max-height: calc(100vh - 2rem);
+	max-width: calc(100vw - 4rem);
+}
+
+.modal__image-block--main {
+	max-width: 100%;
+	margin-bottom: 0.5rem;
+}
+
+.modal__image-block--thumbs {
+	display: flex;
+	max-width: 100%;
+}
+
+.modal__image-block--thumbs--thumb {
+	width: 50px;
+	height: 50px;
+	padding: 0.5rem;
+	&:first-child {
+		padding-left: 0;
+	}
+}
