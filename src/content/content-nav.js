@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContentContext } from '../Context';
-import { InlineCategory } from './';
+import { SubCategories } from './';
 
 export const ContentNav = () => {
 
@@ -28,22 +28,38 @@ export const ContentNav = () => {
 	
 	return(
 		<ContentContext.Consumer>
-			{({content, active_category, switch_category, open_post}) => {
-				let catNames = content.length ? 
-				content.map((cat, i) => {
-					return(
-						<div className="contentNav__catGroup" key={i}>
-							<button disabled={cat.id === active_category} onClick={() => {switch_category(cat.id)}} className={cat.id === active_category ? "contentNav__catGroup--name active" : "contentNav__catGroup--name"}>{cat.name}</button>
-							{cat.id === active_category ?
-								<InlineCategory posts={cat.posts} open_post={open_post}/>
-							: null}
-						</div>
-						)
-				})
-				: null
+			{({categories, active_category, switch_category, open_post}) => {
+				// let catNames = categories.length ? 
+				// categories.map((cat, i) => {
+				// 	// console.log(cat)
+				// 	if(cat.parent === 0) {
+				// 		return(
+				// 			<div className="contentNav__catGroup" key={i}>
+				// 				<button disabled={cat.id === active_category} onClick={() => {switch_category(cat.id)}} className={cat.id === active_category ? "contentNav__catGroup--name active" : "contentNav__catGroup--name"}>{cat.name}</button>
+				// 				{cat.id === active_category ?
+				// 					<InlineCategory parent={cat.parent} posts={cat.posts} open_post={open_post}/>
+				// 				: null}
+				// 			</div>
+				// 		)
+				// 	}
+				// })
+				// : null
 				return(
 					<nav className="contentNav">
-						{catNames}
+						{categories ? 
+							Object.keys(categories).map((cat, i) => {
+								let category = categories[cat];
+								return(
+									category.parent === 0 ?
+									<div className="contentNav__catGroup" key={i}>
+										<button disabled={i === active_category} onClick={() => {switch_category(i)}}>{category.name}</button>
+										<SubCategories parent={category.id} categories={categories}/>
+									</div>
+									: null
+								)
+							})
+						: null
+					}
 					</nav>
 				)
 			}}

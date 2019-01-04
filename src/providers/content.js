@@ -6,21 +6,28 @@ export class Content extends Component {
 		super(props)
 		this.state = {
 			active_category: 0,
-			content: [],
+			categories: null,
+			posts: null,
+			carousel: null,
 			api_endpoint: `${process.env.REACT_APP_WP_API_ROOT}categories/?hide_empty=true&orderby=slug`
 		}
 	}
 
 	componentDidMount = () => {
-		fetch(this.state.api_endpoint)
+		fetch('http://localhost/creationsbydavid/wp-json/content/v1/test',
+		{ headers : { 
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		 } }
+		)
 		.then(res => res.json())
-		.then((content) => {
+		.then(content => {
 			this.setState({
-				content,
-				active_category: content[0].id
+				categories: content.categories,
+				posts: content.posts,
+				carousel: content.carousel
 			})
 		})
-		
 	}
 
 	switchCategory = (active_category) => {
@@ -28,12 +35,14 @@ export class Content extends Component {
 	}
 
 	render() {
-		let { active_category, content } = this.state
+		let { active_category, categories, posts, carousel } = this.state
 		return(
 			<ContentContext.Provider
 				value={{
 					active_category,
-					content,
+					categories,
+					posts,
+					carousel,
 					switch_category: this.switchCategory.bind(this)
 				}}
 			>

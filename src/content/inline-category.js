@@ -14,14 +14,19 @@ export class InlineCategory extends Component {
 	}
 
 	render() {
-		let { posts, open_post } = this.props
+		let { posts, parent, open_post } = this.props
 		let items = posts.map((item, i) => {
+			// console.log(item)
 			return(
 				<Item key={i} item={item} delay={i} open_post={open_post}/>
 			)
 		})
 		return(
 			<div className={"inlineCategory " + this.state.hidden}>
+				{/* if item.category array has id === to parent category */}
+				{/* {item.category.includes(parent) ? 
+				<div>I have a parent</div>
+					: null} */}
 				{items}
 			</div>
 		)
