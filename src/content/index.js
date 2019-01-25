@@ -1,6 +1,9 @@
-import { ContentNav } from './content-nav';
-import { Item } from './item';
-import { ItemDetail } from './item-detail';
-import { InlineCategory } from './inline-category';
+import { Content } from './content';
+import { HorizontalLayout } from './horizontal-layout';
+import { VerticalLayout } from './vertical-layout';
+import { ListCategories } from './list-categories';
+import { PostsArea } from './posts-area';
+import { ListSubcategories } from './list-subcategories';
+import { Posts } from './posts';
 
-export { ContentNav, Item, ItemDetail, InlineCategory }
+export { Content, HorizontalLayout, VerticalLayout, ListCategories, PostsArea, ListSubcategories, Posts }

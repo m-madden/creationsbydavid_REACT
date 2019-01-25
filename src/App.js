@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.scss';
-import { Header, Slideshow, ContentArea, Map, Footer } from './components';
+import { Header, Carousel, Map, Footer } from './components';
+import { Content } from './content';
 
 const App = () => {
 		
 	return (
 		<div className="App">
 			<Header/>
-			<Slideshow/>
-			<ContentArea/>
+			<Carousel/>
+			<Content/>
 			<Map/>
 			<Footer/>
 		</div>

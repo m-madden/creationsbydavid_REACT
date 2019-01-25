@@ -1,0 +1,32 @@
+[{
+	"count": 1,
+	"has_children": false,
+	"id": 1,
+	"name": "Stained Glass",
+	"parent": 2,
+	"slug": "stained-glass"
+},
+{
+	"count": 0,
+	"has_children": true,
+	"id": 2,
+	"name": "Photography",
+	"parent": 0,
+	"slug": "a-photography"
+},
+{
+	"count": 2,
+	"has_children": false,
+	"id": 3,
+	"name": "Landscapes",
+	"parent": 2,
+	"slug": "landscapes"
+},
+{
+"count": 2,
+"has_children": false,
+"id": 4,
+"name": "Bat Houses",
+"parent": 0,
+"slug": "bat-houses"
+}]

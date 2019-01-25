@@ -1,4 +1,3 @@
-import { Content } from './content';
-import { ItemProvider } from './item';
+import { ContentProvider } from './content-provider';
 
-export { Content, ItemProvider }
+export { ContentProvider }
