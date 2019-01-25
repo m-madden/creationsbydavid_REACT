@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
-import { Header, Carousel, ContentArea, Map, Footer } from './components';
+import { Header, Carousel, Map, Footer } from './components';
+import { Content } from './content';
 
 const App = () => {
 		
@@ -8,7 +9,7 @@ const App = () => {
 		<div className="App">
 			<Header/>
 			<Carousel/>
-			<ContentArea/>
+			<Content/>
 			<Map/>
 			<Footer/>
 		</div>

@@ -1,0 +1,35 @@
+[
+	{
+		"categories": [
+			4
+		],
+		"featured_image": "http://localhost/creationsbydavid/wp-content/uploads/2018/12/guinness-150x150.jpg",
+		"id": 1,
+		"name": "bat houses"
+	},
+	{
+		"categories": [
+			3
+		],
+		"featured_image": "http://localhost/creationsbydavid/wp-content/uploads/2018/12/0772-150x150.jpg",
+		"id": 5,
+		"name": "landscape"
+	},
+	{
+		"categories": [
+			4,
+			3
+		],
+		"featured_image": "http://localhost/creationsbydavid/wp-content/uploads/2018/12/Trim-150x150.jpg",
+		"id": 7,
+		"name": "bat houses and landscape"
+	},
+	{
+		"categories": [
+			1
+		],
+		"featured_image": "http://localhost/creationsbydavid/wp-content/uploads/2018/12/IMG_1266-150x150.jpg",
+		"id": 24,
+		"name": "stained glass"
+	}
+]
