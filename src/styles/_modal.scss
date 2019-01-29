@@ -1,4 +1,4 @@
-.modalScrim {
+.modal__scrim {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
@@ -32,27 +32,9 @@
 }
 
 .spinner {
-	border-radius: 50%;
-	width: 80px;
-	height: 80px;
-	border: 10px solid transparent;
-	border-top-color: white;
-	border-bottom-color: white;
 	align-self: center;
 	display: flex;
 	animation: spinRight 1s linear infinite;
-	&:after {
-		display: block;
-		content: "";
-		width: 50px;
-		height: 50px;
-		margin: auto;
-		border-radius: 50%;
-		border: 10px solid transparent;
-		border-left-color: white;
-		border-right-color: white;
-		animation: spinLeft 1s linear infinite;
-	}
 }
 
 @keyframes expand {

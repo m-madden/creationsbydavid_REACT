@@ -15,31 +15,35 @@ export class BasePostsArea extends Component {
 	}
 
 	componentDidMount = () => {
-		let { activeCategory } = this.props;
-		let subcatArray = this.props.subcategories.map((subcat) => {
-			if (subcat.parent === activeCategory) {
-				return (subcat);
-			}
-		}).filter((el) => el != undefined);
-		this.setState({
-			hasSubcategories: subcatArray.length !== 0,
-			subcategories: subcatArray.length !== 0 ? subcatArray : null,
-			activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
-		})
+		let { activeCategory, subcategories } = this.props;
+		if (subcategories) {
+			let subcatArray = subcategories.map((subcat) => {
+				if (subcat.parent === activeCategory) {
+					return (subcat);
+				}
+			}).filter((el) => el != undefined);
+			this.setState({
+				hasSubcategories: subcatArray.length !== 0,
+				subcategories: subcatArray.length !== 0 ? subcatArray : null,
+				activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
+			})
+		}
 	}
 
 	componentWillReceiveProps = (nextProps) => {
-		let { activeCategory } = nextProps;
-		let subcatArray = nextProps.subcategories.map((subcat) => {
-			if (subcat.parent === activeCategory) {
-				return (subcat);
-			}
-		}).filter((el) => el != undefined);
-		this.setState({
-			hasSubcategories: subcatArray.length !== 0,
-			subcategories: subcatArray.length !== 0 ? subcatArray : null,
-			activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
-		})
+		let { activeCategory, subcategories } = nextProps;
+		if (subcategories) {
+			let subcatArray = subcategories.map((subcat) => {
+				if (subcat.parent === activeCategory) {
+					return (subcat);
+				}
+			}).filter((el) => el != undefined);
+			this.setState({
+				hasSubcategories: subcatArray.length !== 0,
+				subcategories: subcatArray.length !== 0 ? subcatArray : null,
+				activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
+			})
+		}
 	}
 
 	swapSubcategory = (id) => {

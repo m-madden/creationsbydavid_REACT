@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ItemContext } from '../Context';
+import { ModalContext } from '../Context';
 
-export class ItemProvider extends Component {
+export class ModalProvider extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -11,12 +11,12 @@ export class ItemProvider extends Component {
 		}
 	}
 
-	openItem = (ID) => {
+	openDetail = (id) => {
 		this.setState({
 			isFetching: true,
 			isOpen: true
 		})
-		fetch(`${process.env.REACT_APP_WP_API_ROOT}posts/${ID}`)
+		fetch(`${process.env.REACT_APP_WP_API_ROOT}posts/${id}`)
 		.then(res => res.json())
 		.then(detail => {
 			this.setState({
@@ -26,7 +26,7 @@ export class ItemProvider extends Component {
 		}) 
 	}
 
-	closeItem = () => {
+	closeDetail = () => {
 		this.setState({
 			isOpen: false,
 			detail: null
@@ -36,17 +36,17 @@ export class ItemProvider extends Component {
 	render() {
 		let { isOpen, isFetching, detail } = this.state;
 		return(
-			<ItemContext.Provider
+			<ModalContext.Provider
 				value={{
 					isOpen,
 					detail,
 					isFetching,
-					open_item: this.openItem.bind(this),
-					close_item: this.closeItem.bind(this)
+					open_detail: this.openDetail.bind(this),
+					close_detail: this.closeDetail.bind(this)
 				}}
 			>
 				{this.props.children}
-			</ItemContext.Provider>
+			</ModalContext.Provider>
 		)
 	}
 }
