@@ -1,11 +1,73 @@
-.headerImages {
+.mainHeader {
 	position: relative;
-	.scrim {
-		background: rgba(white, 0.4);
+	display: flex;
+}
+
+.mainHeader__carouselContainer {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	height: 28vw;
+	img {
+		width: 100%;
+		z-index: -1;
 		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 1rem;
-		bottom: 0;
+		opacity: 0;
+		transition: opacity 1s linear;
+	}
+	img.active {
+		z-index: 0;
+		opacity: 1;
+		transition: opacity 1s linear;
+	}
+}
+
+.mainHeader__logo {
+	position: absolute;
+	max-width: 200px;
+	max-height: 200px;
+	filter: drop-shadow(0 0 30px rgba(black, 0.5));
+	right: 0;
+	align-self: center;
+	margin-right: 2rem;
+}
+
+.mainHeader__carouselControl {
+	height: 50px;
+	width: 100%;
+	background: rgba(black, 0.3);
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	div {
+		width: 10px;
+		height: 10px;
+		background: rgba(white, 0.5);
+		border-radius: 50%;
+		margin: 5px;
+		align-self: center;
+		cursor: pointer;
+	}
+	div.active {
+		background: rgba(white, 0.8);
+	}
+}
+
+.mainHeader__slideTitle {
+	text-transform: capitalize;
+	color: rgba(white, 0.9);
+	text-shadow: 0 0 20px rgba(black, 0.3);
+	position: absolute;
+	align-self: center;
+	left: 2rem;
+	font: 50px 'IM Fell English SC';
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 300ms linear, transform 300ms linear;
+	&.active {
+		transform: translateY(0px);
+		opacity: 1;
+		transition: opacity 300ms linear;
 	}
 }
