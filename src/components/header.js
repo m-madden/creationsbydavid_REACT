@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import largephotography from '../images/carousel/large_photography.jpg';
+import mediumphotography from '../images/carousel/medium_photography.jpg';
+import smallphotography from '../images/carousel/small_photography.jpg';
+
 import largebathouses from '../images/carousel/large_bat_houses.jpg';
-// import largeliteraryart from '../images/carousel/large_literary_art.jpg';
+import mediumbathouses from '../images/carousel/medium_bat_houses.jpg';
+import smallbathouses from '../images/carousel/small_bat_houses.jpg';
+
 import largecustompens from '../images/carousel/large_custom_pens.jpg';
+import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
+import smallcustompens from '../images/carousel/small_custom_pens.jpg';
+
 import smallLogoImg from '../images/smallLogo.png';
 import largeLogoImg from '../images/largeLogo.png';
-
-const sizes = ["small", "medium", "large"];
-let intervalId;
 
 export class Header extends Component {
 	constructor(props) {
@@ -17,20 +22,20 @@ export class Header extends Component {
 			images: [
 				{
 					name: "photography",
-					small: largephotography,
-					medium: largephotography,
+					small: smallphotography,
+					medium: mediumphotography,
 					large: largephotography
 				},
 				{
 					name: "bat houses",
-					small: largebathouses,
-					medium: largebathouses,
+					small: smallbathouses,
+					medium: mediumbathouses,
 					large: largebathouses
 				},
 				{
 					name: "custom pens",
-					small: largecustompens,
-					medium: largecustompens,
+					small: smallcustompens,
+					medium: mediumcustompens,
 					large: largecustompens
 				}
 			]
@@ -39,13 +44,10 @@ export class Header extends Component {
 	}
 
 	switchSlide = (key) => {
-		this.setState({ activeSlide: key }, () => {
-			window.clearInterval(intervalId)
-		})
+		this.setState({ activeSlide: key })
 	}
 
 	render() {
-
 		let { images, activeSlide } = this.state;
 
 		let controls = images.map((category, i) => {
@@ -56,7 +58,10 @@ export class Header extends Component {
 
 		let slides = images.map((set, i) => {
 			return(
-				<img className={activeSlide === i ? "active" : null} key={i} srcSet={`${set.small} 500w, ${set.medium} 1000w, ${set.large} 2000w`}/>
+				<img className={activeSlide === i ? "active" : null} key={i} 
+				src={set.small}
+				srcSet={`${set.small} 430w, ${set.medium} 800w, ${set.large} 1366w`}
+				/>
 			)
 		})
 
