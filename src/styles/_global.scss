@@ -1,4 +1,7 @@
 @mixin breakpoint($point) {
+	@if $point == js-bear {
+		@media (min-width: 900px)  {@content; }
+	}
 	@if $point == papa-bear {
 		@media (min-width: 801px)  {@content; }
 	}
@@ -25,4 +28,9 @@ body#body.no-scroll {
 
 .content {
 	margin: 0rem;
+	@include breakpoint(js-bear) {
+		max-width: calc(100vw - 4rem);
+		width: 100%;
+		margin: 2rem auto 0 auto;
+	}
 }
