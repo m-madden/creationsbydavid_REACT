@@ -20,7 +20,7 @@ export class Modal extends Component {
 		let text = this.strip(detail.excerpt.rendered);
 		return(
 			<div onClick={(e) => {e.stopPropagation()}} className="modal">
-				<ModalGallery {...rest}/>
+				<ModalGallery detail={detail} {...rest}/>
 				<section className="modalText">
 					<h3 className="modalText__title">{detail.title.rendered}</h3>
 					<p className="modalText__text">{text}</p>

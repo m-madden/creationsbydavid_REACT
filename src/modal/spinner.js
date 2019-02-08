@@ -3,6 +3,6 @@ import spinner from '../images/spinner.png';
 
 export const Spinner = () => {
 	return(
-		<img className="spinner" src={spinner} />
+		<img className="spinner" src={spinner} alt="loading..."/>
 	)
 }

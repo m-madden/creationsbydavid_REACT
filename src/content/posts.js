@@ -21,7 +21,7 @@ export const Posts = ({ parent }) => {
 												return (
 													post.categories.includes(parent) &&
 													<div onClick={() => modal.open_detail(post.id)} className="post" key={i}>
-														<img src={thumb_url} />
+														<img src={thumb_url} alt={post.title.rendered}/>
 														<p>{post.title.rendered}</p>
 													</div>
 												)
