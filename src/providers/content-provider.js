@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { ContentContext } from '../Context';
-import data from './static-data';
-import posts from './static-posts';
 
 export class ContentProvider extends Component {
 	constructor(props) {
@@ -12,56 +10,44 @@ export class ContentProvider extends Component {
 			subcategories: null,
 			posts: null,
 			carousel: null,
-			api_endpoint: `${process.env.REACT_APP_WP_API_ROOT}categories/?hide_empty=true&orderby=slug`
+			cat_endpoint: `${process.env.REACT_APP_WP_API_ROOT}categories/?hide_empty=true&orderby=slug`,
+			post_endpoint: `${process.env.REACT_APP_WP_API_ROOT}posts/?_embed`
 		}
 	}
 
 	componentDidMount = () => {
-		let categories = [];
-		let subcategories = [];
-		data.map((category) => {
-			if (category.parent === 0) {
-				return categories.push(category)
-			} else {
-				return subcategories.push(category)
+		const getCats = fetch(this.state.cat_endpoint)
+		.then(res => res.json())
+		.then(content => {
+			let categories = [];
+			let subcategories = [];
+			content.map((category) => {
+				if (category.parent === 0) {
+					return categories.push(category)
+				} else {
+					return subcategories.push(category)
+				}
+			})
+			return {
+				categories,
+				subcategories
 			}
 		})
-		this.setState({
-			categories,
-			subcategories,
-			posts
-		})
-		// fetch('http://localhost/creationsbydavid/wp-json/content/v1/test',
-		// { headers : { 
-		// 	'Content-Type': 'application/json',
-		// 	'Accept': 'application/json'
-		//  } }
-		// )
-		// .then(res => res.json())
-		// .then(content => {
-		// 	console.log(content)
-		// 	let childCats = []
-		// 	const catsArray = Object.keys(content.categories).map(cat => {
-		// 		let category = content.categories[cat]
-		// 		if (content.categories[cat].parent === 0) {
-		// 			return({
-		// 				[category.id]: category,
-		// 				subcategories: null					
-		// 			})
-		// 		} else {
-		// 			childCats.push({[category.id]: category,})
-		// 		}
-		// 	});
-		// 	childCats.filter(child => child !== undefined);
-		// 	let parentCats = catsArray.filter(child => child !== undefined);
 
-		// 	this.setState({
-		// 		categories: content.categories,
-		// 		posts: content.posts,
-		// 		carousel: content.carousel,
-		// 		active_category: parentCats[0]
-		// 	})
-		// })
+		const getPosts = fetch(this.state.post_endpoint)
+		.then(res => res.json())
+		.then(posts => {
+			return posts
+		})
+
+		Promise.all([getCats, getPosts])
+		.then((response) => {
+			this.setState({
+				categories: response[0].categories,
+				subcategories: response[0].subcategories,
+				posts: response[1]
+			})
+		})
 	}
 
 	switchCategory = (active_category) => {

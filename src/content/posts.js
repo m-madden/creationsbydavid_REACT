@@ -17,11 +17,12 @@ export const Posts = ({ parent }) => {
 										return (
 											posts &&
 											posts.map((post, i) => {
+												let thumb_url = post._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url
 												return (
 													post.categories.includes(parent) &&
 													<div onClick={() => modal.open_detail(post.id)} className="post" key={i}>
-														<img src={post.featured_image} />
-														<p>{post.name}</p>
+														<img src={thumb_url} />
+														<p>{post.title.rendered}</p>
 													</div>
 												)
 											})

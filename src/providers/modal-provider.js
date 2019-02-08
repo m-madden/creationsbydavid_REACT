@@ -7,7 +7,10 @@ export class ModalProvider extends Component {
 		this.state = {
 			isOpen: false,
 			detail: null,
-			isFetching: false
+			gallery: null,
+			isFetching: false,
+			post_endpoint: `${process.env.REACT_APP_WP_API_ROOT}posts/`,
+			gallery_endpoint: `${process.env.REACT_APP_CUSTOM_ENDPOINT}`
 		}
 	}
 
@@ -16,14 +19,27 @@ export class ModalProvider extends Component {
 			isFetching: true,
 			isOpen: true
 		})
-		fetch(`${process.env.REACT_APP_WP_API_ROOT}posts/${id}`)
+
+		const getPost = fetch(this.state.post_endpoint + id)
 		.then(res => res.json())
 		.then(detail => {
+			return detail;
+		})
+
+		let getGallery = fetch(this.state.gallery_endpoint + id)
+		.then(res => res.json())
+		.then(response => {
+			return response;
+		})
+
+		Promise.all([getPost, getGallery])
+		.then((response) => {
 			this.setState({
-				detail,
+				detail: response[0],
+				gallery: response[1],
 				isFetching: false
 			})
-		}) 
+		})
 	}
 
 	closeDetail = () => {
@@ -34,12 +50,13 @@ export class ModalProvider extends Component {
 	}
 
 	render() {
-		let { isOpen, isFetching, detail } = this.state;
+		let { isOpen, isFetching, detail, gallery } = this.state;
 		return(
 			<ModalContext.Provider
 				value={{
 					isOpen,
 					detail,
+					gallery,
 					isFetching,
 					open_detail: this.openDetail.bind(this),
 					close_detail: this.closeDetail.bind(this)

@@ -2,13 +2,16 @@ import React from 'react'
 import { Spinner, Modal } from './';
 
 export const ModalContainer = (props) => {
-	let { close_detail, isFetching } = props.modal;
+	let { isFetching, isOpen, open_detail, ...rest } = props.modal;
 	return(
-		<div onClick={() => { close_detail() }} className="modal__scrim">
+		<div onClick={() => { props.modal.close_detail() }} className="modal__scrim">
 			{isFetching ?
 			<Spinner/>
 			:
-			<Modal modal={props.modal}/>
+			<div className="modalContainer">
+				<Modal {...rest}/>
+				<div onClick={() => {props.modal.close_detail()}} className="modal__close"></div>
+			</div>
 			}
 		</div>
 	)

@@ -10,7 +10,7 @@
 	display: flex;
 	justify-content: center;
 	box-sizing: border-box;
-	padding: 1rem;
+	padding: 1rem 1rem 2rem 1rem;
 }
 
 @keyframes spinRight {
@@ -48,34 +48,82 @@
 	}
 }
 
+.modalContainer {
+	align-self: center;
+	position: relative;
+	box-shadow: 0 0 50px rgba(black, 0.5);
+}
+
 .modal {
 	align-self: center;
-	padding: 1rem;
 	background: white;
 	border-radius: 3px;
 	width: 100%;
 	box-sizing: border-box;
 	animation: expand 200ms ease-out forwards;
 	overflow-y: auto;
-	max-height: calc(100vh - 2rem);
-	max-width: calc(100vw - 4rem);
+	max-height: calc(100vh - 3rem);
+	max-width: 700px;
+	position: relative;
 }
 
-.modal__image-block--main {
-	max-width: 100%;
+.modal__close {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: black;
+	position: absolute;
+	z-index: 1;
+	bottom: -15px;
+	left: calc(50% - 15px);
+	box-shadow: 0 -2px 3px rgba(black, 0.3);
+	&:before, &:after {
+		display: block;
+		content: '';
+		width: 4px;
+		height: 20px;
+		background: $neutralLight;
+		transform: rotate(45deg);
+		position: absolute;
+		left: 13px;
+		top: 5px;
+	}
+	&:after {
+		transform: rotate(-45deg);
+	}
+}
+
+.modalText {
+	padding: 1rem;
+}
+
+.modalText__title {
+	font: $font-weight-bold $font-size-regular $font-family-text;
+	text-transform: uppercase;
 	margin-bottom: 0.5rem;
 }
 
-.modal__image-block--thumbs {
-	display: flex;
+.modal__gallery__full {
 	max-width: 100%;
 }
 
-.modal__image-block--thumbs--thumb {
-	width: 50px;
-	height: 50px;
-	padding: 0.5rem;
-	&:first-child {
-		padding-left: 0;
+.modal__gallery__thumbs {
+	display: flex;
+	padding: 1rem;
+}
+
+.thumbnailContainer {
+	width: 75px;
+	height: 75px;
+	margin-right: 0.5rem;
+	cursor: pointer;
+	&:last-child {
+		margin-right: 0;
 	}
+}
+
+.modal__gallery__thumbs .thumbnail {
+	width: 100%;
+	height: 75px;
+	object-fit: cover;
 }
