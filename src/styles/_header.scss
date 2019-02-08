@@ -1,11 +1,98 @@
-.headerImages {
+.mainHeader {
 	position: relative;
-	.scrim {
-		background: rgba(white, 0.4);
+	display: flex;
+}
+
+.mainHeader__carouselContainer {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	height: 100vw;
+	@include breakpoint(mama-bear) {
+		height: 64.5vw;
+	}
+	@include breakpoint(papa-bear) {
+		height: 28vw;
+	}
+	img {
+		min-height: 100%;
+		min-width: 100vw;
+		z-index: -1;
 		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 1rem;
-		bottom: 0;
+		opacity: 0;
+		transition: opacity 1s linear;
+	}
+	img.active {
+		z-index: 0;
+		opacity: 1;
+		transition: opacity 1s linear;
+	}
+}
+
+.mainHeader__logo {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	filter: drop-shadow(0 0 30px rgba(black, 0.5));
+	right: 1rem;
+	top: 1rem;
+	@include breakpoint(mama-bear) {
+		width: 150px;
+		height: 150px;
+		right: 1rem;
+	}
+	@include breakpoint(papa-bear) {
+		right: 2rem;
+		top: unset;
+		align-self: center;
+	}
+}
+
+.mainHeader__carouselControl {
+	height: 50px;
+	width: 100%;
+	background: rgba(black, 0.3);
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	div {
+		width: 10px;
+		height: 10px;
+		background: rgba(white, 0.5);
+		border-radius: 50%;
+		margin: 15px;
+		align-self: center;
+		cursor: pointer;
+		@include breakpoint(papa-bear) {
+			margin: 5px;
+		}
+	}
+	div.active {
+		background: rgba(white, 0.8);
+	}
+}
+
+.mainHeader__slideTitle {
+	width: 100%;
+	text-transform: capitalize;
+	color: rgba(white, 0.9);
+	text-shadow: 0 0 20px rgba(black, 0.3);
+	position: absolute;
+	bottom: 3rem;
+	text-align: center;
+	font: 40px 'IM Fell English SC';
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 300ms linear, transform 300ms linear;
+	@include breakpoint(mama-bear) {
+		text-align: left;
+		left: 2rem;
+		font-size: 45px;
+	}
+	&.active {
+		transform: translateY(0px);
+		opacity: 1;
+		transition: opacity 300ms linear;
 	}
 }
