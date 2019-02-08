@@ -17,11 +17,10 @@ export class BasePostsArea extends Component {
 	componentDidMount = () => {
 		let { activeCategory, subcategories } = this.props;
 		if (subcategories) {
-			let subcatArray = subcategories.map((subcat) => {
-				if (subcat.parent === activeCategory) {
-					return (subcat);
-				}
-			}).filter((el) => el != undefined);
+			let subcatArray = subcategories.map((subcat) => 
+				subcat.parent === activeCategory && subcat
+				
+			).filter((el) => el !== undefined);
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
 				subcategories: subcatArray.length !== 0 ? subcatArray : null,
@@ -37,7 +36,7 @@ export class BasePostsArea extends Component {
 				if (subcat.parent === activeCategory) {
 					return (subcat);
 				}
-			}).filter((el) => el != undefined);
+			}).filter((el) => el !== undefined);
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
 				subcategories: subcatArray.length !== 0 ? subcatArray : null,
@@ -51,7 +50,7 @@ export class BasePostsArea extends Component {
 	}
 
 	render() {
-		let { activeSubcategory, hasSubcategories, subcategories } = this.state;
+		let { activeSubcategory, hasSubcategories } = this.state;
 		let { activeCategory } = this.props;
 		return (
 			hasSubcategories ?

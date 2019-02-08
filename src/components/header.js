@@ -61,6 +61,7 @@ export class Header extends Component {
 				<img className={activeSlide === i ? "active" : null} key={i} 
 				src={set.small}
 				srcSet={`${set.small} 430w, ${set.medium} 800w, ${set.large} 1366w`}
+				alt={set.name}
 				/>
 			)
 		})

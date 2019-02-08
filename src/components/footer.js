@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Footer = (props) => {
+export const Footer = () => {
 
-	const date = new Date;
+	const date = new Date();
 	const year = date.getFullYear();
 
 	return(
