@@ -72,6 +72,8 @@
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
+	border-radius: 3px;
 	p {
 		padding: 0.5rem;
 		text-transform: none;

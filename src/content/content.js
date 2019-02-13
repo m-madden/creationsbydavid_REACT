@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ContentProvider } from '../providers';
-import { VerticalLayout, HorizontalLayout } from './';
+import { VerticalSkeleton, HorizontalSkeleton, VerticalLayout, HorizontalLayout } from './';
 import throttle from 'lodash/throttle';
+import { ContentContext } from '../Context';
 
 const breakpoint = 900;
 
@@ -23,18 +24,30 @@ export class Content extends Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('resize', throttle(this.throttledHandleWindowResize, 200));
-	}	
+	}
 
 	render() {
-		return(
+		return (
 			<ContentProvider>
-				<div className="content">
-					{ this.state.isSmall ?
-					<VerticalLayout/>
-					:
-					<HorizontalLayout/>
-					}
-				</div>
+				<ContentContext.Consumer>
+					{({isFetching}) => {
+						return (
+							<div className="content">
+								{this.state.isSmall ?
+									isFetching ? 
+									<VerticalSkeleton/>
+									:
+									<VerticalLayout />
+									:
+									isFetching ?
+									<HorizontalSkeleton/>
+									:
+									<HorizontalLayout />
+								}
+							</div>
+						)
+					}}
+				</ContentContext.Consumer>
 			</ContentProvider>
 		)
 	}

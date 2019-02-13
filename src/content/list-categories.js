@@ -11,6 +11,10 @@ class BaseListCategories extends Component {
 		this.swapCategory = this.swapCategory.bind(this);
 	}
 
+	componentDidMount = (nextProps) => {
+		this.setState({ activeCategory: this.props.categories[0].id })
+	}
+
 	componentWillReceiveProps = (nextProps) => {
 		this.setState({ activeCategory: nextProps.categories[0].id })
 	}
@@ -24,21 +28,21 @@ class BaseListCategories extends Component {
 		let { verticalLayout, categories } = this.props
 		return(
 			<Fragment>
-			<ul className={verticalLayout ? "categories vertical" : "categories"}>
-				{categories &&
-					categories.map((category, i) => {
-						return(
-							<Fragment key={i}>
-								<li className={category.id === activeCategory ? "active" : null} onClick={() => { this.swapCategory(category.id) }}>{category.name}</li>
-								{verticalLayout && (category.id === activeCategory) ?
-								<PostsArea activeCategory={activeCategory}/>
-								: null
-								}
-							</Fragment>
-						)
-					})
-				}
-			</ul>
+				<ul className={verticalLayout ? "categories vertical" : "categories"}>
+					{categories &&
+						categories.map((category, i) => {
+							return(
+								<Fragment key={i}>
+									<li className={category.id === activeCategory ? "active" : null} onClick={() => { this.swapCategory(category.id) }}>{category.name}</li>
+									{verticalLayout && (category.id === activeCategory) ?
+									<PostsArea activeCategory={activeCategory}/>
+									: null
+									}
+								</Fragment>
+							)
+						})
+					}
+				</ul>
 			{!verticalLayout && <PostsArea activeCategory={activeCategory}/>}
 			</Fragment>
 		)
