@@ -5,6 +5,7 @@ export class ContentProvider extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			isFetching: true,
 			active_category: null,
 			categories: null,
 			subcategories: null,
@@ -43,6 +44,7 @@ export class ContentProvider extends Component {
 		Promise.all([getCats, getPosts])
 		.then((response) => {
 			this.setState({
+				isFetching: false,
 				categories: response[0].categories,
 				subcategories: response[0].subcategories,
 				posts: response[1]
@@ -55,10 +57,11 @@ export class ContentProvider extends Component {
 	}
 
 	render() {
-		let { active_category, categories, subcategories, posts, carousel } = this.state
+		let { isFetching, active_category, categories, subcategories, posts, carousel } = this.state
 		return(
 			<ContentContext.Provider
 				value={{
+					isFetching,
 					active_category,
 					categories,
 					subcategories,
