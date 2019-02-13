@@ -1,0 +1,15 @@
+.map {
+	height: 300px;
+	width: 100vw;
+	background: gray;
+	#map {
+		height: 300px;
+		width: 100%;
+	}
+	.small {
+		font-size: $font-size-small;
+	}
+	.x-small {
+		font-size: 12px;
+	}
+}

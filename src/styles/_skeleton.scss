@@ -1,0 +1,147 @@
+@keyframes animate-skeleton {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.horizontal--skeleton {
+	animation: animate-skeleton 2s infinite;
+	.tabs {
+		display: flex;
+		li {
+			padding: 1rem;
+			&:after {
+				display: block;
+				content: "";
+				background: $neutralLight;
+				width: 100px;
+				height: 1rem;
+				border-radius: 0.5rem;
+			}
+			&:first-child {
+				background: $neutralLight;
+				&:after {
+					background: white;
+				}
+			}
+		}
+	}
+	.posts {
+		display: block;
+		background: $neutralLight;
+		padding: 2rem 0;
+		.subcats {
+			display: flex;
+			justify-content: center;
+			li {
+				background: white;
+				width: 100px;
+				height: 1rem;
+				margin: 1rem;
+				border-radius: 0.5rem;
+			}
+		}
+		.post--area {
+			display: flex;
+			justify-content: center;
+			li {
+				width: 150px;
+				height: calc(150px + 3rem);
+				background: white;
+				margin: 1rem;
+				border-radius: 3px;
+				overflow: hidden;
+				&:before {
+					display: block;
+					content: "";
+					width: 100%;
+					padding-top: 100%;
+					background: $neutral;
+				}
+				&:after {
+					display: block;
+					content: "";
+					border-radius: 0.5rem;
+					height: 1rem;
+					background: $neutralLight;
+					margin: 1rem;
+				}
+			}
+		}
+	}
+}
+
+.vertical--skeleton {
+	animation: animate-skeleton 2s infinite;
+	.categories {
+		display: flex;
+		flex-direction: column;
+		& > li {
+			padding: 1rem 0;
+			width: 100%;
+			border-bottom: 1px solid $neutral;
+			&:first-child {
+				background: $neutralLight;
+				&:before {
+					background: white;
+				}
+			}
+			&:before {
+				display: block;
+				background: $neutralLight;
+				margin: 0.5rem auto;
+				content: "";
+				width: 100px;
+				height: 1rem;
+				border-radius: 0.5rem;
+			}
+		}
+	}
+	.subcategories {
+		display: flex;
+		justify-content: center;
+		& > li {
+			padding: 0;
+			background: $neutral;
+			width: 100px;
+			height: 1rem;
+			margin: 1rem;
+			border-radius: 0.5rem;
+		}
+	}
+	.posts {
+		display: flex;
+		justify-content: center;
+		li {
+			background: white;
+			width: 130px;
+			height: calc(130px + 2rem);
+			margin: 1rem !important;
+			border-radius: 3px;
+			overflow: hidden;
+			padding: 0;
+			&:before {
+				display: block;
+				content: "";
+				width: 100%;
+				padding-top: 100%;
+				background: $neutral;
+			}
+			&:after {
+				display: block;
+				content: "";
+				margin: 0.5rem auto;
+				background: $neutralLight;
+				border-radius: 0.5rem;
+				height: 1rem;
+				width: 100px;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+button {
+	width: 100%;
+	outline: none;
+	background: none;
+	border: none;
+	font: $font-weight-regular $font-size-regular $font-family-text;
+	text-transform: uppercase;
+	padding: 0.5rem 1rem;
+	white-space: nowrap;
+	color: $neutralDark;
+}
+
+button:disabled {
+	font-weight: $font-weight-medium;
+	color: $neutralDark;
+}

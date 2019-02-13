@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700|IM+Fell+English+SC');
+
+$font-size-small: 14px;
+$font-size-regular: 16px;
+$font-size-large: 20px;
+$font-size-x-large: 36px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-family-text: "Roboto", "Arial", sans-serif;
+
+* {
+	-webkit-font-smoothing: antialiased;
+	font-size: $font-size-regular;
+	font-family: $font-family-text;
+	line-height: 1.5em; 
+}
+
+aside, aside a {
+	padding: 0 1rem;
+	font-size: $font-size-large;
+	color: $neutralDark;
+	font-style: italic;
+	text-align: center;
+	margin: 4rem 0;
+}
+
+aside a {
+	padding: 0;
+	text-decoration: none;
+	font-weight: $font-weight-bold;
+}
