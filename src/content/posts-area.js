@@ -17,24 +17,9 @@ export class BasePostsArea extends Component {
 	componentDidMount = () => {
 		let { activeCategory, subcategories } = this.props;
 		if (subcategories) {
-			let subcatArray = subcategories.map((subcat) => 
-				subcat.parent === activeCategory && subcat
-				
-			).filter((el) => el !== undefined);
-			this.setState({
-				hasSubcategories: subcatArray.length !== 0,
-				subcategories: subcatArray.length !== 0 ? subcatArray : null,
-				activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
-			})
-		}
-	}
-
-	componentWillReceiveProps = (nextProps) => {
-		let { activeCategory, subcategories } = nextProps;
-		if (subcategories) {
 			let subcatArray = subcategories.map((subcat) => {
-				if (subcat.parent === activeCategory) {
-					return (subcat);
+				if(subcat.parent === activeCategory) {
+					return subcat
 				}
 			}).filter((el) => el !== undefined);
 			this.setState({
