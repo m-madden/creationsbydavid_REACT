@@ -9,8 +9,8 @@ export class ModalProvider extends Component {
 			detail: null,
 			gallery: null,
 			isFetching: false,
-			post_endpoint: `${process.env.REACT_APP_WP_API_ROOT}posts/`,
-			gallery_endpoint: `${process.env.REACT_APP_CUSTOM_ENDPOINT}`
+			post_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}posts/`,
+			gallery_endpoint: `${process.env.REACT_APP_WP_POST_GALLERY_ENDPOINT}`
 		}
 	}
 

@@ -11,8 +11,8 @@ export class ContentProvider extends Component {
 			subcategories: null,
 			posts: null,
 			carousel: null,
-			cat_endpoint: `${process.env.REACT_APP_WP_API_ROOT}categories/?hide_empty=true&orderby=slug`,
-			post_endpoint: `${process.env.REACT_APP_WP_API_ROOT}posts/?_embed`
+			cat_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}categories/?hide_empty=true&orderby=slug`,
+			post_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}posts/?_embed`
 		}
 	}
 
