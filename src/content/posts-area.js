@@ -30,6 +30,22 @@ export class BasePostsArea extends Component {
 		}
 	}
 
+	componentWillReceiveProps = (nextProps) => {
+		let { activeCategory, subcategories } = nextProps;
+		if (subcategories) {
+			let subcatArray = subcategories.map((subcat) => {
+				if(subcat.parent === activeCategory) {
+					return subcat
+				}
+			}).filter((el) => el !== undefined);
+			this.setState({
+				hasSubcategories: subcatArray.length !== 0,
+				subcategories: subcatArray.length !== 0 ? subcatArray : null,
+				activeSubcategory: subcatArray.length !== 0 ? subcatArray[0].id : null,
+			})
+		}
+	}
+
 	swapSubcategory = (id) => {
 		this.setState({ activeSubcategory: id })
 	}
