@@ -24,7 +24,7 @@ export class Modal extends Component {
 				<section className="modalText">
 					<h3 className="modalText__title">{detail.title.rendered}</h3>
 					<p className="modalText__text">{text}</p>
-					{detail.meta.materials[0] !== "" || detail.meta.dimensions[0] !== "" &&
+					{(detail.meta.materials[0] !== "" || detail.meta.dimensions[0] !== "") &&
 						<div className="modalText__indicia">
 							{detail.meta.materials[0] !== "" &&
 								<p className="modalText__materials">{detail.meta.materials[0]}</p>

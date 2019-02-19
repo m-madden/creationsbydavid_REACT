@@ -21,6 +21,7 @@ export class BasePostsArea extends Component {
 				if(subcat.parent === activeCategory) {
 					return subcat
 				}
+				return undefined
 			}).filter((el) => el !== undefined);
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
@@ -37,6 +38,7 @@ export class BasePostsArea extends Component {
 				if(subcat.parent === activeCategory) {
 					return subcat
 				}
+				return undefined
 			}).filter((el) => el !== undefined);
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
