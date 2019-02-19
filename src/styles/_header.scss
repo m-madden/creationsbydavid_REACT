@@ -57,18 +57,22 @@
 	display: flex;
 	justify-content: center;
 	div {
-		width: 10px;
-		height: 10px;
-		background: rgba(white, 0.5);
-		border-radius: 50%;
-		margin: 15px;
+		padding: 15px;
 		align-self: center;
 		cursor: pointer;
 		@include breakpoint(papa-bear) {
 			margin: 5px;
 		}
+		&:after {
+			display: block;
+			content: "";
+			width: 10px;
+			height: 10px;
+			background: rgba(white, 0.5);
+			border-radius: 50%;
+		}
 	}
-	div.active {
+	div.active:after {
 		background: rgba(white, 0.8);
 	}
 }
