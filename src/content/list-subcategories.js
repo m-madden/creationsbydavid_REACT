@@ -1,4 +1,5 @@
 import React from "react";
+import { unescape } from 'lodash';
 import { ContentContext } from "../Context";
 
 export const ListSubcategories = ({
@@ -21,7 +22,7 @@ export const ListSubcategories = ({
 									className={activeSubcategory === subcat.id ? "active" : null}
 									key={i}
 								>
-									{subcat.name}
+									{unescape(subcat.name)}
 								</li>
 							);
 						})

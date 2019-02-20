@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { unescape } from 'lodash';
 import { ContentContext, ModalContext } from '../Context';
 import { ModalProvider } from '../providers';
 import { Portal } from '../modal';
@@ -22,7 +23,7 @@ export const Posts = ({ parent }) => {
 													post.categories.includes(parent) &&
 													<div onClick={() => modal.open_detail(post.id)} className="post" key={i}>
 														<img src={thumb_url} alt={post.title.rendered}/>
-														<p>{post.title.rendered}</p>
+														<p>{unescape(post.title.rendered)}</p>
 													</div>
 												)
 											})
