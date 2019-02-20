@@ -37,9 +37,11 @@
 .postsArea .subcategories {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 2rem;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
 	li {
-		margin: 0 0.5rem;
+		white-space: nowrap;
+		margin: 0.5rem 0.5rem;
 		cursor: pointer;
 		border-bottom: none;
 		&.active {

@@ -103,6 +103,14 @@
 	margin-bottom: 0.5rem;
 }
 
+.modalText__materials {
+	font-style: italic;
+}
+
+.modalText__dimensions {
+	font: $font-weight-bold $font-size-small $font-family-text;
+}
+
 .modal__gallery__full {
 	max-width: 100%;
 }
@@ -110,6 +118,12 @@
 .modal__gallery__thumbs {
 	display: flex;
 	padding: 1rem;
+}
+
+.modalText__indicia {
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid $neutral;
 }
 
 .thumbnailContainer {

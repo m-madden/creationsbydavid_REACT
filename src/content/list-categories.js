@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { unescape } from 'lodash';
 import { ContentContext } from '../Context';
 import { PostsArea } from './'
 
@@ -33,7 +34,7 @@ class BaseListCategories extends Component {
 						categories.map((category, i) => {
 							return(
 								<Fragment key={i}>
-									<li className={category.id === activeCategory ? "active" : null} onClick={() => { this.swapCategory(category.id) }}>{category.name}</li>
+									<li className={category.id === activeCategory ? "active" : null} onClick={() => { this.swapCategory(category.id) }}>{unescape(category.name)}</li>
 									{verticalLayout && (category.id === activeCategory) ?
 									<PostsArea activeCategory={activeCategory}/>
 									: null
