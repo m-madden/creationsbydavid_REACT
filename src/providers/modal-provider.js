@@ -20,7 +20,7 @@ export class ModalProvider extends Component {
 			isOpen: true
 		})
 
-		const getPost = fetch(this.state.post_endpoint + id)
+		const getPost = fetch(this.state.post_endpoint + id + "/?_embed")
 		.then(res => res.json())
 		.then(detail => {
 			return detail;
