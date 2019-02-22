@@ -15,18 +15,20 @@ export class ModalGallery extends Component {
 	render() {
 		let { detail, gallery } = this.props;
 		const thumbs = gallery.map((thumb, i) => {
-			return(
+			return gallery.length > 1 ?
 				<div onClick={ () => { this.switchFullImage(i) }} className="thumbnailContainer" key={i}>
 					<img className="thumbnail" src={thumb} alt={detail.title.rendered}/>
 				</div>
-			)
+			: null
 		})
 		return(
 			<div className="modal__gallery">
 				<img className="modal__gallery__full" src={this.state.activeImage} alt=""/>
-				<div className="modal__gallery__thumbs">
-					{thumbs}
-				</div>
+				{thumbs.length > 1 &&
+					<div className="modal__gallery__thumbs">
+						{thumbs}
+					</div>
+				}
 			</div>
 		)
 	}
