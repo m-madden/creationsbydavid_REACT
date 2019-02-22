@@ -12,7 +12,7 @@ export class ContentProvider extends Component {
 			posts: null,
 			carousel: null,
 			cat_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}categories/?hide_empty=true&orderby=slug`,
-			post_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}posts/?_embed`
+			post_endpoint: `${process.env.REACT_APP_WP_API_ENDPOINT}posts/?per_page=100&_embed`
 		}
 	}
 
