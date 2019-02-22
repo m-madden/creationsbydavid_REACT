@@ -4,8 +4,17 @@ export class ModalGallery extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeImage: this.props.gallery[0]
+			activeImage: null
 		}
+	}
+
+	componentDidMount = () => {
+		let { detail, gallery } = this.props;
+		let featured_image_url = detail._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url
+		gallery.unshift(featured_image_url);
+		this.setState({
+			activeImage: gallery[0]
+		})
 	}
 
 	switchFullImage = (id) => {
@@ -23,7 +32,9 @@ export class ModalGallery extends Component {
 		})
 		return(
 			<div className="modal__gallery">
-				<img className="modal__gallery__full" src={this.state.activeImage} alt=""/>
+				{this.state.activeImage && 
+					<img className="modal__gallery__full" src={this.state.activeImage} alt=""/>
+				}
 				{thumbs.length > 1 &&
 					<div className="modal__gallery__thumbs">
 						{thumbs}
