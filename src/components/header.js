@@ -58,7 +58,7 @@ export class Header extends Component {
 					medium: mediumliteraryart2,
 					large: largeliteraryart2
 				}
-			]
+			].sort(() => { return 0.5 - Math.random()})
 		}
 		this.switchSlide = this.switchSlide.bind(this);
 	}
