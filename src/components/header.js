@@ -11,13 +11,13 @@ import largecustompens from '../images/carousel/large_custom_pens.jpg';
 import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
 import smallcustompens from '../images/carousel/small_custom_pens.jpg';
 
-import largeliteraryart from '../images/carousel/large_literary_art.jpg';
-import mediumliteraryart from '../images/carousel/medium_literary_art.jpg';
-import smallliteraryart from '../images/carousel/small_literary_art.jpg';
+import largepainting from '../images/carousel/large_painting.jpg';
+import mediumpainting from '../images/carousel/medium_painting.jpg';
+import smallpainting from '../images/carousel/small_painting.jpg';
 
-import largeliteraryart2 from '../images/carousel/large_literary_art2.jpg';
-import mediumliteraryart2 from '../images/carousel/medium_literary_art2.jpg';
-import smallliteraryart2 from '../images/carousel/small_literary_art2.jpg';
+import largeliteraryart2 from '../images/carousel/large_literary_art.jpg';
+import mediumliteraryart2 from '../images/carousel/medium_literary_art.jpg';
+import smallliteraryart2 from '../images/carousel/small_literary_art.jpg';
 
 import smallLogoImg from '../images/smallLogo.png';
 import largeLogoImg from '../images/largeLogo.png';
@@ -47,10 +47,10 @@ export class Header extends Component {
 					large: largecustompens
 				},
 				{
-					name: "vintage book art",
-					small: smallliteraryart,
-					medium: mediumliteraryart,
-					large: largeliteraryart
+					name: "paintings",
+					small: smallpainting,
+					medium: mediumpainting,
+					large: largepainting
 				},
 				{
 					name: "vintage book art",
