@@ -42,6 +42,8 @@
 		right: 1rem;
 	}
 	@include breakpoint(papa-bear) {
+		width: 200px;
+		height: 200px;
 		right: 2rem;
 		top: unset;
 		align-self: center;
