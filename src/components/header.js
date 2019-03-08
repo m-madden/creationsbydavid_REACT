@@ -78,11 +78,24 @@ export class Header extends Component {
 
 		let slides = images.map((set, i) => {
 			return(
-				<img className={activeSlide === i ? "active" : null} key={i} 
-				src={set.small}
-				srcSet={`${set.small} 430w, ${set.medium} 800w, ${set.large} 1366w`}
-				alt={set.name}
-				/>
+				// <img className={activeSlide === i ? "active" : null} key={i} 
+				// src={set.small}
+				// srcSet={`${set.small} 430w, ${set.medium} 800w, ${set.large} 1366w`}
+				// sizes="(max-width: 430px) 430px, 100vw"
+				// alt={set.name}
+				// />
+				<picture key={i}>
+					<source 
+						media="(max-width: 430px)"
+						srcSet={`${set.small}`}/>
+					<source
+						media="(max-width: 800px"
+						srcSet={`${set.medium}`}/>
+					<source
+						media="(min-width: 800px"
+						srcSet={`${set.large}`}/>
+					<img src={`${set.small}`} className={activeSlide === i ? "active" : null}/>
+				</picture>
 			)
 		})
 
