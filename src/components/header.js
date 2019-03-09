@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import largephotography from '../images/carousel/large_photography.jpg';
-import mediumphotography from '../images/carousel/medium_photography.jpg';
-import smallphotography from '../images/carousel/small_photography.jpg';
+import largephotography from '../images/carousel/large_photo.jpg';
+import mediumphotography from '../images/carousel/medium_photo.jpg';
+import smallphotography from '../images/carousel/small_photo.jpg';
 
-import largebathouses from '../images/carousel/large_bat_houses.jpg';
-import mediumbathouses from '../images/carousel/medium_bat_houses.jpg';
-import smallbathouses from '../images/carousel/small_bat_houses.jpg';
+// import largebathouses from '../images/carousel/large_bat_houses.jpg';
+// import mediumbathouses from '../images/carousel/medium_bat_houses.jpg';
+// import smallbathouses from '../images/carousel/small_bat_houses.jpg';
 
-import largecustompens from '../images/carousel/large_custom_pens.jpg';
-import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
-import smallcustompens from '../images/carousel/small_custom_pens.jpg';
+// import largecustompens from '../images/carousel/large_custom_pens.jpg';
+// import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
+// import smallcustompens from '../images/carousel/small_custom_pens.jpg';
 
 import largepainting from '../images/carousel/large_painting.jpg';
 import mediumpainting from '../images/carousel/medium_painting.jpg';
@@ -33,18 +33,6 @@ export class Header extends Component {
 					small: smallphotography,
 					medium: mediumphotography,
 					large: largephotography
-				},
-				{
-					name: "bat houses",
-					small: smallbathouses,
-					medium: mediumbathouses,
-					large: largebathouses
-				},
-				{
-					name: "custom pens",
-					small: smallcustompens,
-					medium: mediumcustompens,
-					large: largecustompens
 				},
 				{
 					name: "paintings",
@@ -78,12 +66,6 @@ export class Header extends Component {
 
 		let slides = images.map((set, i) => {
 			return(
-				// <img className={activeSlide === i ? "active" : null} key={i} 
-				// src={set.small}
-				// srcSet={`${set.small} 430w, ${set.medium} 800w, ${set.large} 1366w`}
-				// sizes="(max-width: 430px) 430px, 100vw"
-				// alt={set.name}
-				// />
 				<picture key={i}>
 					<source 
 						media="(max-width: 430px)"
