@@ -22,6 +22,10 @@ export class ModalGallery extends Component {
 	}
 
 	render() {
+
+		// let large = document.getElementById('large');
+		// console.log(large.clientWidth)
+
 		let { detail, gallery } = this.props;
 		const thumbs = gallery.map((thumb, i) => {
 			return gallery.length > 1 ?
@@ -31,16 +35,18 @@ export class ModalGallery extends Component {
 			: null
 		})
 		return(
-			<div className="modal__gallery">
+			<>
 				{this.state.activeImage && 
-					<img className="modal__gallery__full" src={this.state.activeImage} alt=""/>
+				<img id="large" className="modal__gallery__full" src={this.state.activeImage} alt=""/>
 				}
-				{thumbs.length > 1 &&
-					<div className="modal__gallery__thumbs">
-						{thumbs}
-					</div>
-				}
-			</div>
+				<div className="modal__gallery">
+					{thumbs.length > 1 &&
+						<div className="modal__gallery__thumbs">
+							{thumbs}
+						</div>
+					}
+				</div>
+			</>
 		)
 	}
 }

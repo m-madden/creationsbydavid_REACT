@@ -33,13 +33,17 @@ export class BasePostsArea extends Component {
 
 	componentWillReceiveProps = (nextProps) => {
 		let { activeCategory, subcategories } = nextProps;
+
 		if (subcategories) {
 			let subcatArray = subcategories.map((subcat) => {
+				console.log(activeCategory)
+				console.log(subcat.parent)
 				if(subcat.parent === activeCategory) {
 					return subcat
 				}
 				return undefined
 			}).filter((el) => el !== undefined);
+			console.log(subcatArray)
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
 				subcategories: subcatArray.length !== 0 ? subcatArray : null,
@@ -53,12 +57,12 @@ export class BasePostsArea extends Component {
 	}
 
 	render() {
-		let { activeSubcategory, hasSubcategories } = this.state;
+		let { activeSubcategory, hasSubcategories, subcategories } = this.state;
 		let { activeCategory } = this.props;
 		return (
 			hasSubcategories ?
 			<div className="postsArea">
-				<ListSubcategories activeCategory={activeCategory} swapSubcategory={this.swapSubcategory} activeSubcategory={activeSubcategory} />
+				<ListSubcategories activeCategory={activeCategory} swapSubcategory={this.swapSubcategory} activeSubcategory={activeSubcategory} subcategories={subcategories}/>
 				<Posts parent={activeSubcategory} />
 			</div>
 			:
