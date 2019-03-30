@@ -15,25 +15,28 @@ export class Modal extends Component {
 		return doc.body.textContent || "";
 	}
 
+	
+
 	render() {
+
 		let { detail, close_detail, ...rest } = this.props;
 		let text = this.strip(detail.excerpt.rendered);
+
 		return (
 			<div onClick={(e) => { e.stopPropagation() }} className="modal">
 				<ModalGallery detail={detail} {...rest} />
 				<section className="modalText">
-					<h3 className="modalText__title">{detail.title.rendered}</h3>
-					<p className="modalText__text">{text}</p>
+					<div className="modalText__title">{detail.title.rendered}</div>
+					<div className="modalText__text">{text}</div>
 					{(detail.meta.materials[0] !== "" || detail.meta.dimensions[0] !== "") &&
-						<div className="modalText__indicia">
-							{detail.meta.materials[0] !== "" &&
-								<p className="modalText__materials">{detail.meta.materials[0]}</p>
+					
+							detail.meta.materials[0] !== "" &&
+								<div className="modalText__materials">{detail.meta.materials[0]}</div>
 							}
 							{detail.meta.dimensions[0] !== "" &&
-								<p className="modalText__dimensions">{detail.meta.dimensions[0]}</p>
+								<div className="modalText__dimensions">{detail.meta.dimensions[0]}</div>
 							}
-						</div>
-					}
+					
 				</section>
 			</div>
 		)
