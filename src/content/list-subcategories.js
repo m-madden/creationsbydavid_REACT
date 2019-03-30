@@ -5,12 +5,13 @@ import { ContentContext } from "../Context";
 export const ListSubcategories = ({
 	activeCategory,
 	swapSubcategory,
-	activeSubcategory
+	activeSubcategory,
+	subcategories
 }) => {
 	return (
 		<ul className="subcategories">
 			<ContentContext.Consumer>
-				{({ subcategories }) => {
+				{() => {
 					return (
 						subcategories &&
 						subcategories.map((subcat, i) => {
