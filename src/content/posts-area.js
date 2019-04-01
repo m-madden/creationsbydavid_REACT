@@ -36,14 +36,11 @@ export class BasePostsArea extends Component {
 
 		if (subcategories) {
 			let subcatArray = subcategories.map((subcat) => {
-				console.log(activeCategory)
-				console.log(subcat.parent)
 				if(subcat.parent === activeCategory) {
 					return subcat
 				}
 				return undefined
 			}).filter((el) => el !== undefined);
-			console.log(subcatArray)
 			this.setState({
 				hasSubcategories: subcatArray.length !== 0,
 				subcategories: subcatArray.length !== 0 ? subcatArray : null,
