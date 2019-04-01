@@ -7,9 +7,9 @@ import smallphotography from '../images/carousel/small_photo.jpg';
 // import mediumbathouses from '../images/carousel/medium_bat_houses.jpg';
 // import smallbathouses from '../images/carousel/small_bat_houses.jpg';
 
-// import largecustompens from '../images/carousel/large_custom_pens.jpg';
-// import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
-// import smallcustompens from '../images/carousel/small_custom_pens.jpg';
+import largecustompens from '../images/carousel/large_custom_pens.jpg';
+import mediumcustompens from '../images/carousel/medium_custom_pens.jpg';
+import smallcustompens from '../images/carousel/small_custom_pens.jpg';
 
 import largepainting from '../images/carousel/large_painting.jpg';
 import mediumpainting from '../images/carousel/medium_painting.jpg';
@@ -45,6 +45,12 @@ export class Header extends Component {
 					small: smallliteraryart2,
 					medium: mediumliteraryart2,
 					large: largeliteraryart2
+				},
+				{
+					name: "handmade pens",
+					small: smallcustompens,
+					medium: mediumcustompens,
+					large: largecustompens
 				}
 			].sort(() => { return 0.5 - Math.random()})
 		}
@@ -76,7 +82,7 @@ export class Header extends Component {
 					<source
 						media="(min-width: 800px"
 						srcSet={`${set.large}`}/>
-					<img src={`${set.small}`} className={activeSlide === i ? "active" : null}/>
+					<img src={`${set.small}`} className={activeSlide === i ? "active" : null} alt=""/>
 				</picture>
 			)
 		})
