@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Header, Map, Footer } from './components';
+import { Header, Map, Contact, Footer } from './components';
 import { Content } from './content';
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
 		<div className="App">
 			<Header/>
 			<Content/>
+			<Contact/>
 			<Map/>
 			<Footer/>
 		</div>

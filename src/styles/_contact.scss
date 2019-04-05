@@ -1,0 +1,161 @@
+.contact {
+	padding: 0 1rem;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	@include breakpoint(js-bear) {
+		flex-direction: row;
+		justify-content: center;
+		max-width: 1000px;
+		margin: 0 auto 1rem auto;
+	}
+}
+
+.contact_text {
+	align-self: center;
+	padding-bottom: 3rem;
+	text-align: center;
+	border-bottom: 1px solid $neutral;
+	@include breakpoint(js-bear) {
+		border-bottom: none;
+		padding-bottom: 0;
+		margin-right: 1rem;
+	}
+}
+
+.or {
+	text-transform: lowercase;
+	font-size: 30px;
+	font-style: italic;
+	font-family: 'Lobster', serif;
+	background: white;
+	width: 50px;
+	min-width: 50px;
+	height: 50px;
+	max-height: 50px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	align-self: center;
+	position: relative;
+	text-align: center;
+	color: rgba($neutralDark, 0.87);
+	margin-top: -25px;
+	line-height: 42px;
+	padding-right: 4px;
+	border: 1px solid $neutralDark;
+	@include breakpoint(js-bear) {
+		margin-top: 0;
+		margin-right: -25px;
+	}
+}
+
+.contact_form {
+	margin-top: 2rem;
+	align-self: center;
+	max-width: 500px;
+	width: 100%;
+	@include breakpoint(js-bear) {
+		padding-left: 3rem;
+		border-left: 1px solid $neutral;
+	}
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+	label {
+		margin-bottom: 0.25rem;
+		text-transform: uppercase;
+		font: bold 1rem 'Roboto', 'Arial', sans-serif;
+		color: rgba($neutralDark, 0.87);
+	}
+	margin-bottom: 1rem;
+	input {
+		background: $neutralLight;
+		border: none;
+		padding: 1rem;
+		border-radius: 3px;
+		outline: none;
+	}
+}
+
+.textarea {
+	margin-bottom: 1rem;
+	line-height: 0;
+	label {
+		margin-bottom: 0.25rem;
+		text-transform: uppercase;
+		font: bold 1rem 'Roboto', 'Arial', sans-serif;
+		color: rgba($neutralDark, 0.87);
+		display: block;
+	}
+	textarea {
+		background: $neutralLight;
+		color: rgba(black, 0.87);
+		resize: none;
+		border: none;
+		border-radius: 3px;
+		width: 100%;
+		outline: none;
+		padding: 1rem;
+		min-height: 8rem;
+		box-sizing: border-box;
+	}
+}
+
+@keyframes showValidateMessage {
+	0% {
+		margin-top: -20px;
+	}
+	100% {
+		margin-top: 0px;
+	}
+}
+
+.validation_message {
+	position: relative;
+	z-index: -1;
+	text-align: right;
+	color: $neutralDark;
+	font-size: 14px;
+	margin-top: -20px;
+	animation: showValidateMessage 0.3s forwards;
+}
+
+.large_button {
+	background: $neutralDark;
+	padding: 1rem 2rem;
+	color: rgba(white, 0.87);
+	border-radius: 3px;
+	width: fit-content;
+	align-self: flex-end;
+}
+
+@keyframes slide {
+	0% {
+		bottom: -6rem;
+	}
+	2% {
+		bottom: 0rem;
+	}
+	98% {
+		bottom: 0rem;
+	}
+	100% {
+		bottom: -6rem;
+	}
+}
+
+.success_toast {
+	position: fixed;
+	bottom: -6rem;
+	padding: 2rem 1rem;
+	background: $neutralDark;
+	color: rgba(white, 0.87);
+	width: 100vw;
+	left: 0;
+	z-index: 9999;
+	box-shadow: 0 0 8px 1px rgba(black, 0.3);
+	animation: slide 5s ease-in-out;
+}

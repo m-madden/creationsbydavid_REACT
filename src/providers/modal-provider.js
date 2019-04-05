@@ -29,6 +29,7 @@ export class ModalProvider extends Component {
 		let getGallery = fetch(this.state.gallery_endpoint + id)
 		.then(res => res.json())
 		.then(response => {
+			console.log(response)
 			return response;
 		})
 
