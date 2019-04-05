@@ -42,7 +42,6 @@ export class Map extends Component {
 	render() {
 		return(
 			<Fragment>
-				<aside>David's work is available for purchase at <a href="http://robinsgallery.com">Robin's&nbsp;Gallery</a> in Nashville,&nbsp;TN</aside>
 				<div className="map">
 					<div id="map" ref={this.mapRef}>Loading...</div>
 				</div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700|IM+Fell+English+SC');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700|IM+Fell+English+SC|Lobster');
 
 $font-size-small: 14px;
 $font-size-regular: 16px;
@@ -18,17 +18,25 @@ $font-family-text: "Roboto", "Arial", sans-serif;
 	line-height: 1.5em; 
 }
 
-aside, aside a {
+.aside {
 	padding: 0 1rem;
-	font-size: $font-size-large;
 	color: $neutralDark;
 	font-style: italic;
 	text-align: center;
-	margin: 4rem 0;
+	margin: 3rem 0;
+}
+
+aside {
+	padding: 0;
+	text-decoration: none;
+	font-size: $font-size-large;
+	font-weight: $font-weight-regular;
+	color: $neutralDark;
 }
 
 aside a {
-	padding: 0;
 	text-decoration: none;
+	font-size: $font-size-large;
 	font-weight: $font-weight-bold;
+	color: $neutralDark;
 }
