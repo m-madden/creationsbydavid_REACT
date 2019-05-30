@@ -17,7 +17,7 @@ export const Contact = () => {
 	const [ values, onChange, validateEmail, submitForm ] = useContact(initialValues);
 
 	return(
-		<div>
+		<div className="static_content">
 			<div className="aside">
 				<aside>David's work is available for purchase at&nbsp;<a href="http://robinsgallery.com">Robin's&nbsp;Gallery</a></aside>
 				<aside>2607 Lebanon Pike, Nashville, TN 37214</aside>
