@@ -6,11 +6,13 @@
     "fstream": "^1.0.12",
     "handlebars": "^4.1.2",
     "js-yaml": "^3.13.1",
+    "lodash": "^4.17.13",
+    "lodash.template": "4.5.0",
     "node-sass": "^4.11.0",
     "querystringify": "^2.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.1",
+    "react-scripts": "2.1.8",
     "react-transition-group": "^2.5.0"
   },
   "scripts": {
