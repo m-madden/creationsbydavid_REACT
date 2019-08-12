@@ -10,9 +10,10 @@
     "lodash.template": "4.5.0",
     "node-sass": "^4.11.0",
     "querystringify": "^2.1.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-google-recaptcha": "^2.0.0-rc.1",
+    "react-scripts": "3.1.0",
     "react-transition-group": "^2.5.0"
   },
   "scripts": {
@@ -29,5 +30,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "guppy": {
+    "id": "a75ccf20-bd0e-11e9-bdc2-1bd725bb6df3",
+    "name": "creationsbydavid",
+    "type": "create-react-app",
+    "color": "#00C853",
+    "icon": null,
+    "createdAt": 1565620624662
+  }
 }
