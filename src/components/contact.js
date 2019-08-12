@@ -74,7 +74,7 @@ export const Contact = () => {
 							onErrored={() => {
 								validateRecaptcha(false);
 							}}
-							sitekey="6Lc9m7IUAAAAAG9_dACBnAJk9oEgPwXUi3p7Wr2Y"
+							sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
 							onChange={() => {
 								validateRecaptcha(true);
 							}}
