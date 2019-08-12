@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export const useContact = (initialValues) => {
 	const [ values, setValues ] = useState(initialValues);
+	const [ recaptchaStatus, setRecaptchaStatus ] = useState(false);
 
 	const onChange = (name, value) => {
 		setValues({ ...values, [name]: value });
@@ -10,6 +11,10 @@ export const useContact = (initialValues) => {
 	const validateEmail = () => {
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		setValues({...values, valid_email: re.test(values.email)});
+	}
+
+	const validateRecaptcha = (value) => {
+		setRecaptchaStatus(value)
 	}
 
 	const submitForm = () => {
@@ -47,5 +52,5 @@ export const useContact = (initialValues) => {
 		})
 	}
 
-	return [ values, onChange, validateEmail, submitForm ];
+	return [ validateRecaptcha, recaptchaStatus, values, onChange, validateEmail, submitForm ];
 }
