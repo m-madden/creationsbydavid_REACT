@@ -1,10 +1,14 @@
 import React from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { Input, TextArea, LargeButton } from "./forms";
 import { SuccessToast } from "./";
 import { useContact } from "./use-contact";
 
 export const Contact = () => {
+
+	var Recaptcha = require('react-recaptcha');
+
+	let recaptchaInstance
+
 	const initialValues = {
 		subject: "",
 		email: "",
@@ -15,12 +19,11 @@ export const Contact = () => {
 	};
 
 	const [
-		validateRecaptcha,
-		recaptchaStatus,
+		verifyCallback,
+		executeCaptcha,
 		values,
 		onChange,
-		validateEmail,
-		submitForm
+		validateEmail
 	] = useContact(initialValues);
 	return (
 		<div className="static_content">
@@ -66,23 +69,16 @@ export const Contact = () => {
 						name="message"
 						value={values.message}
 					/>
-					<div className="g-recaptcha">
-						<ReCAPTCHA
-							onExpired={() => {
-								validateRecaptcha(false);
-							}}
-							onErrored={() => {
-								validateRecaptcha(false);
-							}}
-							sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
-							onChange={() => {
-								validateRecaptcha(true);
-							}}
-						/>
-					</div>
+					<Recaptcha
+						ref={e => recaptchaInstance = e}
+						sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
+						size="invisible"
+						verifyCallback={verifyCallback}
+						badge="inline"
+					/>
 					<LargeButton
-						disabled={values.valid_email && recaptchaStatus}
-						method={submitForm}
+						disabled={values.valid_email}
+						method={() => { executeCaptcha(recaptchaInstance) }}
 					>
 						Submit
 					</LargeButton>
