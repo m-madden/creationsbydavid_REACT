@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 export const useContact = (initialValues) => {
 	const [ values, setValues ] = useState(initialValues);
-	const [ recaptchaStatus, setRecaptchaStatus ] = useState(false);
 
 	const onChange = (name, value) => {
 		setValues({ ...values, [name]: value });
@@ -13,11 +12,11 @@ export const useContact = (initialValues) => {
 		setValues({...values, valid_email: re.test(values.email)});
 	}
 
-	const validateRecaptcha = (value) => {
-		setRecaptchaStatus(value)
+	const executeCaptcha = (recaptchaRef) => {
+		recaptchaRef.execute();
 	}
 
-	const submitForm = () => {
+	const verifyCallback = (response) => {
 		fetch(`${process.env.REACT_APP_WP_CONTACT_ENDPOINT}`, {
 			method: "POST",
 			mode: "cors",
@@ -52,5 +51,5 @@ export const useContact = (initialValues) => {
 		})
 	}
 
-	return [ validateRecaptcha, recaptchaStatus, values, onChange, validateEmail, submitForm ];
+	return [ verifyCallback, executeCaptcha, values, onChange, validateEmail ];
 }
