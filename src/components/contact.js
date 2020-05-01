@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Input, TextArea, LargeButton } from "./forms";
 import { SuccessToast } from "./";
 import { useContact } from "./use-contact";
 
 export const Contact = () => {
 
-	var Recaptcha = require('react-recaptcha');
+	const recaptchaRef = useRef();
 
-	let recaptchaInstance
+	
+
+	// function verify(value) {
+	// 	console.log(value)
+	// 	// console.log("Captcha value:", value);
+	// }
 
 	const initialValues = {
 		subject: "",
@@ -15,16 +21,18 @@ export const Contact = () => {
 		message: "",
 		name: "",
 		success: false,
-		valid_email: null
+		valid_email: null,
+		error_message: null,
+		response_pending: false
 	};
 
 	const [
-		verifyCallback,
-		executeCaptcha,
 		values,
 		onChange,
-		validateEmail
+		validateEmail,
+		verifyCallback,
 	] = useContact(initialValues);
+	
 	return (
 		<div className="static_content">
 			<div className="aside">
@@ -41,48 +49,54 @@ export const Contact = () => {
 				</div>
 				<div className="or">or</div>
 				<div className="contact_form">
-					<Input
-						method={onChange}
-						validate={() => null}
-						label="Name"
-						name="name"
-						value={values.name}
-					/>
-					<Input
-						method={onChange}
-						validate={validateEmail}
-						is_valid={values.valid_email}
-						label="Email"
-						name="email"
-						value={values.email}
-					/>
-					<Input
-						method={onChange}
-						validate={() => null}
-						label="Subject"
-						name="subject"
-						value={values.subject}
-					/>
-					<TextArea
-						method={onChange}
-						label="Message"
-						name="message"
-						value={values.message}
-					/>
-					<Recaptcha
-						ref={e => recaptchaInstance = e}
-						sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
-						size="invisible"
-						verifyCallback={verifyCallback}
-						badge="inline"
-					/>
-					<LargeButton
-						disabled={values.valid_email}
-						method={() => { executeCaptcha(recaptchaInstance) }}
-					>
-						Submit
-					</LargeButton>
-					{values.success && <SuccessToast />}
+					<form onSubmit={(e) => { e.preventDefault(); recaptchaRef.current.execute(); }}>
+						<Input
+							method={onChange}
+							validate={() => null}
+							label="Name"
+							name="name"
+							value={values.name}
+						/>
+						<Input
+							method={onChange}
+							validate={validateEmail}
+							is_valid={values.valid_email}
+							label="Email"
+							name="email"
+							value={values.email}
+						/>
+						<Input
+							method={onChange}
+							validate={() => null}
+							label="Subject"
+							name="subject"
+							value={values.subject}
+						/>
+						<TextArea
+							method={onChange}
+							label="Message"
+							name="message"
+							value={values.message}
+						/>
+						<ReCAPTCHA
+							ref={recaptchaRef}
+							sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+							onChange={verifyCallback}
+							className="reCaptcha"
+							size="invisible"
+							badge="inline"
+							onExpired={() => { return }}
+						/>
+						{ values.error_message && <span className="contactServerError">{values.error_message}</span> }
+						<LargeButton
+							disabled={values.response_pending === true || values.email === "" || !values.valid_email}
+							method={() => console.log("")}
+							showSpinner={values.response_pending}
+						>
+							Submit
+						</LargeButton>
+						{values.success && <SuccessToast />}
+					</form>
 				</div>
 			</div>
 		</div>

@@ -9,14 +9,18 @@ export const useContact = (initialValues) => {
 
 	const validateEmail = () => {
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		setValues({...values, valid_email: re.test(values.email)});
-	}
-
-	const executeCaptcha = (recaptchaRef) => {
-		recaptchaRef.execute();
+		setValues({
+			...values, 
+			valid_email: re.test(values.email)
+		});
 	}
 
 	const verifyCallback = (response) => {
+		setValues({
+			...values,
+			response_pending: true,
+			error_message: null
+		})
 		fetch(`${process.env.REACT_APP_WP_CONTACT_ENDPOINT}`, {
 			method: "POST",
 			mode: "cors",
@@ -26,30 +30,38 @@ export const useContact = (initialValues) => {
 			body: JSON.stringify(values)
 		})
 		.then(res => {
+			console.log(res)
 			return res.json()
 		})
 		.then(success => {
-			setValues({
-				success: true,
-				name: "",
-				email: "",
-				subject: "",
-				message: "",
-				valid_email: false
-			})
-		}).then(() => {
-			setTimeout(() => {
+			if(success === false) {
 				setValues({
+					...values,
 					success: false,
+					valid_email: false,
+					error_message: "There was a problem sending your message. Please try again.",
+					response_pending: false
+				})
+			} else {
+				setValues({
+					success: true,
 					name: "",
 					email: "",
 					subject: "",
 					message: "",
-					valid_email: false
+					valid_email: false,
+					error_message: null,
+					response_pending: false
 				})
-			}, 6000)
+				setTimeout(() => {
+					setValues({
+						...values,
+						success: false,
+					})
+				}, 6000)
+			}
 		})
 	}
 
-	return [ verifyCallback, executeCaptcha, values, onChange, validateEmail ];
+	return [ values, onChange, validateEmail, verifyCallback ];
 }
