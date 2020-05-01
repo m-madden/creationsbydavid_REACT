@@ -125,11 +125,18 @@
 
 .large_button {
 	background: $neutralDark;
-	padding: 1rem 2rem;
 	color: rgba(white, 0.87);
+	padding: 0 1rem 0 0;
 	border-radius: 3px;
 	width: fit-content;
 	align-self: flex-end;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.large_button span {
+	align-self: center;
+	padding: 1rem 1rem 1rem 2rem;
 }
 
 @keyframes slide {
@@ -160,6 +167,44 @@
 	animation: slide 5s ease-in-out;
 }
 
-.g-recaptcha {
+.reCaptcha {
 	margin-bottom: 1rem;
+}
+
+.contactServerError {
+	color: red;
+	font: 0.8rem 'Roboto', 'Arial', sans-serif;
+	margin-bottom: 1rem;
+	display: block;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+.spinnerContainer {
+	width: 1.5rem;
+	height: 1.5rem;
+	transition: margin-left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	position: relative;
+	align-self: center;
+	margin-left: -1.5rem;
+	opacity: 0;
+}
+
+.spinnerContainer.showSpinner {
+	margin-left: 0;
+	opacity: 1;
+}
+
+.formSpinner {
+	overflow: visible;
+	width: 1.5rem;
+	height: 1.5rem;
+	animation: spin 1s linear infinite;
 }

@@ -15,14 +15,14 @@
     "querystringify": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-recaptcha": "^2.3.10",
+    "react-google-recaptcha": "^2.0.1",
     "react-scripts": "3.1.0",
     "react-transition-group": "^2.5.0",
     "serialize-javascript": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && copyfiles build/* build/static/css/* build/static/js/* build/static/media/* build_repo/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
