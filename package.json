@@ -10,7 +10,7 @@
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.13",
     "lodash.template": "4.5.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "node-sass": "^4.11.0",
     "querystringify": "^2.1.1",
     "react": "^16.9.0",
